@@ -91,9 +91,9 @@ for k in range(len(direc)):
     e = b_img[L[-1][1]][L[-1][0]][1]
     f = b_img[L[-1][1]][L[-1][0]][2]
 
-    #correcting errors i.e. maintaining bottom curve portion, present on both lateral sides with one color. 
-    #parcellate using small assumption that the geometric baseline is a horizontal line for each
-    #assumption half i.e. on anterior and  as well as posterior.
+    #correcting errors i.e. maintaining bottom curve portion, present on both lateral sides with single region respectively. 
+    #parcellate using small assumption that the geometric baseline being the horizontal line for each
+    #half i.e. on anterior and  as well as posterior side of corpus callosum.
 
     #for upright image (original)
 
