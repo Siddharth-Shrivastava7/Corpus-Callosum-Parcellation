@@ -3,7 +3,7 @@ import cv2
 import glob
 import numpy
 
-direc = glob.glob('/home/siddharth/Documents/BTP/ce_net/cenet_me/dataset/Brain/training/mask/*.jpg') 
+direc = glob.glob('./mask/*.jpg') 
 
 direc = sorted(direc)
 
@@ -23,8 +23,8 @@ for k in range(len(direc)):
 
     # for one j value we r seeing different values of i, for which pixel intensity is 255. 
 
-    L = []
-
+    L = [] #list of pixels corresponding for corpus callosum.
+    
     for j in range(b_img.shape[1]): 
         for i in range(b_img.shape[0]):
             if(b_img[i][j][0]==255):
