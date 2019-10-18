@@ -19,8 +19,6 @@ for k in range(len(direc)):
 
     ret, b_img = cv2.threshold(img_n,127,255,cv2.THRESH_BINARY)
 
-    #b_img = np.rot90(b_img,2)  ## for images inverted initially (rotated it with 180 degrees)
-
     # for one j value we r seeing different values of i, for which pixel intensity is 255. 
 
     L = [] #list of pixels corresponding for corpus callosum.
