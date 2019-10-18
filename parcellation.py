@@ -15,7 +15,7 @@ for k in range(len(direc)):
 
     img_n = img.copy()
 
-    # img_n = np.rot90(img_n,2)  #if image is inverted by 180 degree
+    #img_n = cv2.flip( b_img, 0 ) # for 180 degree inversion
 
     ret, b_img = cv2.threshold(img_n,127,255,cv2.THRESH_BINARY)
 
@@ -99,14 +99,14 @@ for k in range(len(direc)):
 
     for j in range(regions[0],regions[2]):
         for i in range(L[0][1], b_img.shape[0]):
-            if(b_img[i][j][0] != 0):
+            if(b_img[i][j][1] == 255):
                 b_img[i][j][0] = a 
                 b_img[i][j][1] = b
                 b_img[i][j][2] = c
                 
     for j in range(regions[2],regions[5]):
         for i in range(L[-1][1], b_img.shape[0]):
-            if(b_img[i][j][0] != 0):
+            if(b_img[i][j][1] != 255):
                 b_img[i][j][0] = d 
                 b_img[i][j][1] = e
                 b_img[i][j][2] = f
