@@ -2,6 +2,7 @@
 import cv2
 import glob
 import numpy
+import matplotlib.pyplot as plt
 
 direc = glob.glob('./mask/*.jpg') 
 
@@ -112,7 +113,7 @@ for k in range(len(direc)):
     
     save_path = direc[k].replace('mask','parcellation')
 
-    cv2.imwrite(save_path,b_img)
+    plt.imsave(save_path,b_img)
 
 print('Finished It')
     
