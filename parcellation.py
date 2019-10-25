@@ -110,8 +110,7 @@ for i in range(b_imgi.shape[0]):
     for j in range(regions[0],regions[2]):
         for i in range(L[0][1], b_img.shape[0]):
 
-            if(b_img[i][j][1] != 0):
-            if(b_img[i][j][1] == 255):
+            if(b_img[i][j][2] != 0):
 
                 b_img[i][j][0] = a 
                 b_img[i][j][1] = b
@@ -121,8 +120,6 @@ for i in range(b_imgi.shape[0]):
         for i in range(L[-1][1], b_img.shape[0]):
 
             if(b_img[i][j][1] != 0):
-
-            if(b_img[i][j][1] != 255):
 
                 b_img[i][j][0] = d 
                 b_img[i][j][1] = e
