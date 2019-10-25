@@ -23,10 +23,8 @@ for k in direc:
 
     ret, b_img = cv2.threshold(img_n,127,255,cv2.THRESH_BINARY)
 
-    b_img = cv2.flip(b_img,0)  ## for images inverted initially (rotated it with 180 degrees)
-
-
-    #img_n = cv2.flip( b_img, 0 ) # for 180 degree inversion
+    #b_img = cv2.flip(b_img,0)  ## for images inverted initially (rotated it with 180 degrees along horizontal axis )
+    
 
     ret, b_img = cv2.threshold(img_n,127,255,cv2.THRESH_BINARY)
 
@@ -64,32 +62,32 @@ for k in direc:
 
     #filling colors (parcellating)... according to mentioned scheme i.e. here hofer
 
-for i in range(b_imgi.shape[0]):
+for i in range(b_img.shape[0]):
     for j in range(regions[0], regions[1]):
-        if(b_imgi[i][j][0]!=0):
-            b_imgi.itemset((i, j, 0), 200)
-            b_imgi.itemset((i, j, 1), 0)
-            b_imgi.itemset((i, j, 2), 0)
+        if(b_img[i][j][0]!=0):
+            b_img.itemset((i, j, 0), 200)
+            b_img.itemset((i, j, 1), 0)
+            b_img.itemset((i, j, 2), 0)
     for j in range(regions[1], regions[2]):
-        if(b_imgi[i][j][0]!=0):
-            b_imgi.itemset((i, j, 0),  210)
-            b_imgi.itemset((i, j, 1), 0)
-            b_imgi.itemset((i, j, 2), 210)
+        if(b_img[i][j][0]!=0):
+            b_img.itemset((i, j, 0),  210)
+            b_img.itemset((i, j, 1), 0)
+            b_img.itemset((i, j, 2), 210)
     for j in range(regions[2], regions[3]):
-        if(b_imgi[i][j][0]!=0):
-            b_imgi.itemset((i, j, 0), 0)
-            b_imgi.itemset((i, j, 1), 230)
-            b_imgi.itemset((i, j, 2), 0)
+        if(b_img[i][j][0]!=0):
+            b_img.itemset((i, j, 0), 0)
+            b_img.itemset((i, j, 1), 230)
+            b_img.itemset((i, j, 2), 0)
     for j in range(regions[3], regions[4]):
-        if(b_imgi[i][j][0]!=0):
-            b_imgi.itemset((i, j, 0), 240)
-            b_imgi.itemset((i, j, 1), 240)
-            b_imgi.itemset((i, j, 2), 0)
+        if(b_img[i][j][0]!=0):
+            b_img.itemset((i, j, 0), 240)
+            b_img.itemset((i, j, 1), 240)
+            b_img.itemset((i, j, 2), 0)
     for j in range(regions[4], regions[5]+1):
-        if(b_imgi[i][j][0]!=0):
-            b_imgi.itemset((i, j, 0), 0)
-            b_imgi.itemset((i, j, 1), 0)
-            b_imgi.itemset((i, j,2), 255)
+        if(b_img[i][j][0]!=0):
+            b_img.itemset((i, j, 0), 0)
+            b_img.itemset((i, j, 1), 0)
+            b_img.itemset((i, j,2), 255)
 
     #anterior 
     a = b_img[L[0][1]][L[0][0]][0]
