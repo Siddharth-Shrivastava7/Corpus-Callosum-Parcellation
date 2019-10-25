@@ -19,14 +19,10 @@ for k in direc:
     #print(direc[k])
 
     img_n = img.copy()
-
-
+    
     ret, b_img = cv2.threshold(img_n,127,255,cv2.THRESH_BINARY)
 
     #b_img = cv2.flip(b_img,0)  ## for images inverted initially (rotated it with 180 degrees along horizontal axis )
-    
-
-    ret, b_img = cv2.threshold(img_n,127,255,cv2.THRESH_BINARY)
 
 
     # for one j value we r seeing different values of i, for which pixel intensity is 255. 
