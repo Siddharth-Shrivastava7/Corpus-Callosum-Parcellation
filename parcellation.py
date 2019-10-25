@@ -1,11 +1,11 @@
 
 import cv2
 import glob
-<<<<<<< HEAD
+
 import numpy as np
-=======
+
 import numpy
->>>>>>> 08c70b29b8e8a5b07de7755ca38cc1b48f383ad6
+
 import matplotlib.pyplot as plt
 
 direc = glob.glob('/home/siddharth/Documents/BTP/ce_net/cenet_me/Original/valid/mask/*.jpg') 
@@ -20,17 +20,17 @@ for k in direc:
 
     img_n = img.copy()
 
-<<<<<<< HEAD
+
     ret, b_img = cv2.threshold(img_n,127,255,cv2.THRESH_BINARY)
 
     b_img = cv2.flip(b_img,0)  ## for images inverted initially (rotated it with 180 degrees)
 
-=======
+
     #img_n = cv2.flip( b_img, 0 ) # for 180 degree inversion
 
     ret, b_img = cv2.threshold(img_n,127,255,cv2.THRESH_BINARY)
 
->>>>>>> 08c70b29b8e8a5b07de7755ca38cc1b48f383ad6
+
     # for one j value we r seeing different values of i, for which pixel intensity is 255. 
 
     L = [] #list of pixels corresponding for corpus callosum.
@@ -109,22 +109,21 @@ for i in range(b_imgi.shape[0]):
 
     for j in range(regions[0],regions[2]):
         for i in range(L[0][1], b_img.shape[0]):
-<<<<<<< HEAD
+
             if(b_img[i][j][1] != 0):
-=======
             if(b_img[i][j][1] == 255):
->>>>>>> 08c70b29b8e8a5b07de7755ca38cc1b48f383ad6
+
                 b_img[i][j][0] = a 
                 b_img[i][j][1] = b
                 b_img[i][j][2] = c
                 
     for j in range(regions[2],regions[5]):
         for i in range(L[-1][1], b_img.shape[0]):
-<<<<<<< HEAD
+
             if(b_img[i][j][1] != 0):
-=======
+
             if(b_img[i][j][1] != 255):
->>>>>>> 08c70b29b8e8a5b07de7755ca38cc1b48f383ad6
+
                 b_img[i][j][0] = d 
                 b_img[i][j][1] = e
                 b_img[i][j][2] = f
@@ -132,11 +131,9 @@ for i in range(b_imgi.shape[0]):
     
     save_path = k.replace('mask','parcellated')
 
-<<<<<<< HEAD
-    np.save(save_path,b_img)
-=======
+
     plt.imsave(save_path,b_img)
->>>>>>> 08c70b29b8e8a5b07de7755ca38cc1b48f383ad6
+
 
 print('Finished It')
     
