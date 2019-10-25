@@ -1,25 +1,24 @@
 
 import cv2
 import glob
-import numpy
+import numpy as np
+import matplotlib.pyplot as plt
 
-direc = glob.glob('./mask/*.jpg') 
+direc = glob.glob('/home/siddharth/Documents/BTP/ce_net/cenet_me/Original/valid/mask/*.jpg') 
 
 direc = sorted(direc)
 
-for k in range(len(direc)):
+for k in direc:
 
-    img = cv2.imread(direc[k])
+    img = plt.imread(k)
 
     #print(direc[k])
 
     img_n = img.copy()
 
-    # img_n = np.rot90(img_n,2)  #if image is inverted by 180 degree
-
     ret, b_img = cv2.threshold(img_n,127,255,cv2.THRESH_BINARY)
 
-    #b_img = np.rot90(b_img,2)  ## for images inverted initially (rotated it with 180 degrees)
+    b_img = cv2.flip(b_img,0)  ## for images inverted initially (rotated it with 180 degrees)
 
     # for one j value we r seeing different values of i, for which pixel intensity is 255. 
 
@@ -54,32 +53,32 @@ for k in range(len(direc)):
 
     #filling colors (parcellating)... according to mentioned scheme i.e. here hofer
 
-    for i in range(b_img.shape[0]):
-        for j in range(regions[0], regions[1]):
-            if(b_img[i][j][0]!=0):
-                b_img.itemset((i, j, 0), 255)
-                b_img.itemset((i, j, 1), 0)
-                b_img.itemset((i, j, 2), 0)
-        for j in range(regions[1], regions[2]):
-            if(b_img[i][j][0]!=0):
-                b_img.itemset((i, j, 0), 0)
-                b_img.itemset((i, j, 1), 255)
-                b_img.itemset((i, j, 2), 0)
-        for j in range(regions[2], regions[3]):
-            if(b_img[i][j][0]!=0):
-                b_img.itemset((i, j, 0), 0)
-                b_img.itemset((i, j, 1), 0)
-                b_img.itemset((i, j, 2), 255)
-        for j in range(regions[3], regions[4]):
-            if(b_img[i][j][0]!=0):
-                b_img.itemset((i, j, 0), 255)
-                b_img.itemset((i, j, 1), 255)
-                b_img.itemset((i, j, 2), 0)
-        for j in range(regions[4], regions[5]+1):
-            if(b_img[i][j][0]!=0):
-                b_img.itemset((i, j, 0), 255)
-                b_img.itemset((i, j, 1), 0)
-                b_img.itemset((i, j, 2), 255)
+for i in range(b_imgi.shape[0]):
+    for j in range(regions[0], regions[1]):
+        if(b_imgi[i][j][0]!=0):
+            b_imgi.itemset((i, j, 0), 200)
+            b_imgi.itemset((i, j, 1), 0)
+            b_imgi.itemset((i, j, 2), 0)
+    for j in range(regions[1], regions[2]):
+        if(b_imgi[i][j][0]!=0):
+            b_imgi.itemset((i, j, 0),  210)
+            b_imgi.itemset((i, j, 1), 0)
+            b_imgi.itemset((i, j, 2), 210)
+    for j in range(regions[2], regions[3]):
+        if(b_imgi[i][j][0]!=0):
+            b_imgi.itemset((i, j, 0), 0)
+            b_imgi.itemset((i, j, 1), 230)
+            b_imgi.itemset((i, j, 2), 0)
+    for j in range(regions[3], regions[4]):
+        if(b_imgi[i][j][0]!=0):
+            b_imgi.itemset((i, j, 0), 240)
+            b_imgi.itemset((i, j, 1), 240)
+            b_imgi.itemset((i, j, 2), 0)
+    for j in range(regions[4], regions[5]+1):
+        if(b_imgi[i][j][0]!=0):
+            b_imgi.itemset((i, j, 0), 0)
+            b_imgi.itemset((i, j, 1), 0)
+            b_imgi.itemset((i, j,2), 255)
 
     #anterior 
     a = b_img[L[0][1]][L[0][0]][0]
@@ -99,22 +98,22 @@ for k in range(len(direc)):
 
     for j in range(regions[0],regions[2]):
         for i in range(L[0][1], b_img.shape[0]):
-            if(b_img[i][j][0] != 0):
+            if(b_img[i][j][1] != 0):
                 b_img[i][j][0] = a 
                 b_img[i][j][1] = b
                 b_img[i][j][2] = c
                 
     for j in range(regions[2],regions[5]):
         for i in range(L[-1][1], b_img.shape[0]):
-            if(b_img[i][j][0] != 0):
+            if(b_img[i][j][1] != 0):
                 b_img[i][j][0] = d 
                 b_img[i][j][1] = e
                 b_img[i][j][2] = f
 
     
-    save_path = direc[k].replace('mask','parcellation')
+    save_path = k.replace('mask','parcellated')
 
-    cv2.imwrite(save_path,b_img)
+    np.save(save_path,b_img)
 
 print('Finished It')
     
